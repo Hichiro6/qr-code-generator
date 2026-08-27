@@ -1,0 +1,21 @@
+{
+  "name": "QR Code Generator",
+  "short_name": "QR Code Generator",
+  "description": "Generate QR codes for URLs, WiFi, vCards, and text in your browser. 100% local, no tracking.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#08090a",
+  "theme_color": "#08090a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": [
+    "productivity",
+    "utilities"
+  ],
+  "lang": "en-US"
+}
