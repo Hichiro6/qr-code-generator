@@ -444,7 +444,7 @@ export async function initI18n() {
   const ariaElements = document.querySelectorAll('[data-i18n-attr]');
   for (const el of ariaElements) {
     const attrMapping = el.getAttribute('data-i18n-attr');
-    const [attrName, translateKey] = attrMapping.split(':');
+    const [attrName, translateKey] = attrMapping.split(':').map((s) => s.trim());
     if (attrName && translateKey) {
       el.setAttribute(attrName, t(translateKey));
     }

@@ -4,23 +4,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Generate QR codes for URLs, WiFi, vCards, text — 100% in your browser, nothing uploaded" />
+  <meta name="color-scheme" content="dark light" />
   <title>QR Code Generator — Create QR Codes Online</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="manifest" href="/manifest.json" />
-  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="manifest" href="./manifest.json" />
+  <link rel="stylesheet" href="./styles/main.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
   <header class="header">
     <div class="header__inner">
       <div class="header__brand">
         <div class="header__logo">
           <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="3" y="3" width="9" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
-            <rect x="5" y="5" width="3" height="3" fill="#6366f1"/>
+            <rect x="5" y="5" width="3" height="3" fill="#9a9bff"/>
             <rect x="16" y="3" width="9" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
-            <rect x="18" y="5" width="3" height="3" fill="#6366f1"/>
+            <rect x="18" y="5" width="3" height="3" fill="#9a9bff"/>
             <rect x="3" y="16" width="9" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
-            <rect x="5" y="18" width="3" height="3" fill="#6366f1"/>
+            <rect x="5" y="18" width="3" height="3" fill="#9a9bff"/>
             <path d="M16 16h3v3M22 16v6M16 22h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
           </svg>
         </div>
@@ -30,27 +35,27 @@
         </div>
       </div>
       <div class="header__actions">
-        <span class="badge badge--privacy" data-i18n="privacy.badge" tabindex="0" data-i18n-attr="title: privacy.tooltip">Client-side only</span>
+        <span class="badge badge--privacy" data-i18n="privacy.badge" data-i18n-attr="title: privacy.tooltip">Client-side only</span>
         <div id="lang-selector"></div>
       </div>
     </div>
   </header>
 
-  <main class="main">
+  <main class="main" id="main-content">
     <div class="workspace">
       <!-- Tabs -->
       <div class="tabs" role="tablist" aria-label="QR Code type">
-        <button class="tab tab--active" role="tab" aria-selected="true" data-tab="url" data-i18n="tabs.url">URL</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="wifi" data-i18n="tabs.wifi">WiFi</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="vcard" data-i18n="tabs.vcard">vCard</button>
-        <button class="tab" role="tab" aria-selected="false" data-tab="text" data-i18n="tabs.text">Text</button>
+        <button class="tab tab--active" role="tab" id="tab-btn-url" aria-selected="true" aria-controls="tab-url" tabindex="0" data-tab="url" data-i18n="tabs.url">URL</button>
+        <button class="tab" role="tab" id="tab-btn-wifi" aria-selected="false" aria-controls="tab-wifi" tabindex="-1" data-tab="wifi" data-i18n="tabs.wifi">WiFi</button>
+        <button class="tab" role="tab" id="tab-btn-vcard" aria-selected="false" aria-controls="tab-vcard" tabindex="-1" data-tab="vcard" data-i18n="tabs.vcard">vCard</button>
+        <button class="tab" role="tab" id="tab-btn-text" aria-selected="false" aria-controls="tab-text" tabindex="-1" data-tab="text" data-i18n="tabs.text">Text</button>
       </div>
 
       <div class="workspace__body">
         <!-- Left: Form -->
         <div class="pages-section">
           <!-- URL Tab -->
-          <div id="tab-url" class="tab-panel tab-panel--active" role="tabpanel">
+          <div id="tab-url" class="tab-panel tab-panel--active" role="tabpanel" aria-labelledby="tab-btn-url">
             <div class="control-group">
               <label for="url-input" class="control-label" data-i18n="form.url.label">Website URL</label>
               <input type="url" id="url-input" class="control-input" data-i18n="form.url.placeholder" placeholder="https://example.com" />
@@ -58,7 +63,7 @@
           </div>
 
           <!-- WiFi Tab -->
-          <div id="tab-wifi" class="tab-panel" role="tabpanel" hidden>
+          <div id="tab-wifi" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-wifi" hidden>
             <div class="control-group">
               <label for="wifi-ssid" class="control-label" data-i18n="form.wifi.ssid">Network Name (SSID)</label>
               <input type="text" id="wifi-ssid" class="control-input" data-i18n="form.wifi.placeholder.ssid" placeholder="MyWiFi" />
@@ -75,8 +80,8 @@
                 <option value="nopass">No Password</option>
               </select>
             </div>
-            <div class="control-group">
-              <label for="wifi-hidden" class="control-label">
+            <div class="control-group control-group--checkbox">
+              <label for="wifi-hidden" class="control-label control-label--checkbox">
                 <input type="checkbox" id="wifi-hidden" class="control-checkbox" />
                 <span data-i18n="form.wifi.hidden">Hidden Network</span>
               </label>
@@ -84,7 +89,7 @@
           </div>
 
           <!-- vCard Tab -->
-          <div id="tab-vcard" class="tab-panel" role="tabpanel" hidden>
+          <div id="tab-vcard" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-vcard" hidden>
             <div class="control-row">
               <div class="control-group">
                 <label for="vcard-prefix" class="control-label" data-i18n="form.vcard.prefix">Prefix</label>
@@ -126,7 +131,7 @@
           </div>
 
           <!-- Text Tab -->
-          <div id="tab-text" class="tab-panel" role="tabpanel" hidden>
+          <div id="tab-text" class="tab-panel" role="tabpanel" aria-labelledby="tab-btn-text" hidden>
             <div class="control-group">
               <label for="text-input" class="control-label" data-i18n="form.text.label">Your Text</label>
               <textarea id="text-input" class="control-input" rows="5" data-i18n="form.text.placeholder" placeholder="Enter your message..."></textarea>
@@ -145,11 +150,11 @@
           <div class="control-row">
             <div class="control-group">
               <label for="qr-color" class="control-label" data-i18n="options.color">Color</label>
-              <input type="color" id="qr-color" class="control-input" value="#1a1a2e" />
+              <input type="color" id="qr-color" class="control-input control-color" value="#0f1011" />
             </div>
             <div class="control-group">
               <label for="qr-bg" class="control-label" data-i18n="options.bg">Background</label>
-              <input type="color" id="qr-bg" class="control-input" value="#ffffff" />
+              <input type="color" id="qr-bg" class="control-input control-color" value="#ffffff" />
             </div>
           </div>
           <div class="control-group">
@@ -189,6 +194,6 @@
 
   <div id="sr-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
 
-  <script type="module" src="/src/main.js"></script>
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>

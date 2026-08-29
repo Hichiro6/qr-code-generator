@@ -62,6 +62,7 @@ function switchTab(tabName) {
     const isActive = tab.dataset.tab === tabName;
     tab.classList.toggle('tab--active', isActive);
     tab.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    tab.setAttribute('tabindex', isActive ? '0' : '-1');
   }
 
   for (const panel of tabPanels) {
@@ -139,7 +140,6 @@ function generateWifiQr() {
   if (hidden) {
     data += 'H:true;';
   }
-  data += ';';
 
   return data;
 }
@@ -223,9 +223,11 @@ async function generateQr() {
     canvas.setAttribute('aria-label', 'Generated QR code');
     qrPreview.appendChild(canvas);
 
-    // Store data for downloads
+    // Store canvas reference for downloads (avoids memory leak from repeated toDataURL)
     lastQrData = data;
-    qrPreview.dataset.canvasData = canvas.toDataURL('image/png');
+    qrPreview.currentCanvas = canvas;
+    qrActions.hidden = false;
+    announce('QR code generated');
 
     // Store SVG data
     const svgString = await QRCode.toString(data, {
@@ -239,9 +241,6 @@ async function generateQr() {
       errorCorrectionLevel: 'M',
     });
     qrPreview.dataset.svgData = svgString;
-
-    qrActions.hidden = false;
-    announce('QR code generated');
   } catch (err) {
     announce(t('error.failed', { msg: err.message }));
     console.error('QR generation failed:', err);
@@ -252,9 +251,10 @@ async function generateQr() {
 }
 
 function downloadPng() {
-  const dataUrl = qrPreview.dataset.canvasData;
-  if (!dataUrl) return;
+  const canvas = qrPreview.currentCanvas;
+  if (!canvas) return;
 
+  const dataUrl = canvas.toDataURL('image/png');
   const a = document.createElement('a');
   a.href = dataUrl;
   a.download = `qr-code-${Date.now()}.png`;
@@ -279,14 +279,23 @@ function downloadSvg() {
 }
 
 async function copyImage() {
-  const dataUrl = qrPreview.dataset.canvasData;
-  if (!dataUrl) return;
+  const canvas = qrPreview.currentCanvas;
+  if (!canvas) return;
 
   try {
-    const response = await fetch(dataUrl);
-    const blob = await response.blob();
-    await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
-    announce('Image copied to clipboard');
+    canvas.toBlob(async (blob) => {
+      if (!blob) {
+        announce('Copy failed');
+        return;
+      }
+      try {
+        await navigator.clipboard.write([new ClipboardItem({ [blob.type]: blob })]);
+        announce('Image copied to clipboard');
+      } catch (err) {
+        console.error('Clipboard copy failed:', err);
+        announce('Copy failed');
+      }
+    }, 'image/png');
   } catch (err) {
     console.error('Clipboard copy failed:', err);
     announce('Copy failed');
@@ -303,7 +312,7 @@ function resetForm() {
     }
   }
 
-  qrColor.value = '#1a1a2e';
+  qrColor.value = '#0f1011';
   qrBg.value = '#ffffff';
   qrMargin.value = '2';
   marginValue.textContent = '2';
@@ -312,7 +321,7 @@ function resetForm() {
   qrPreview.innerHTML = '<p class="qr-placeholder">' + t('btn.generate') + '</p>';
   qrActions.hidden = true;
   lastQrData = '';
-  delete qrPreview.dataset.canvasData;
+  qrPreview.currentCanvas = null;
   delete qrPreview.dataset.svgData;
 }
 
