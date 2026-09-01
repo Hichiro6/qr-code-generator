@@ -6,21 +6,23 @@
 export const STORAGE_KEY = 'qr-code-generator-lang';
 
 export const LANGUAGES = {
-  en: { code: 'en', name: 'English' },
-  fr: { code: 'fr', name: 'Français' },
-  de: { code: 'de', name: 'Deutsch' },
-  es: { code: 'es', name: 'Español' },
-  pt: { code: 'pt', name: 'Português' },
-  nl: { code: 'nl', name: 'Nederlands' },
-  it: { code: 'it', name: 'Italiano' },
+  en: { name: 'English', flag: '🇬🇧' },
+  fr: { name: 'Français', flag: '🇫🇷' },
+  de: { name: 'Deutsch', flag: '🇩🇪' },
+  es: { name: 'Español', flag: '🇪🇸' },
+  pt: { name: 'Português', flag: '🇵🇹' },
+  nl: { name: 'Nederlands', flag: '🇳🇱' },
+  it: { name: 'Italiano', flag: '🇮🇹' },
 };
 
 export const TRANSLATIONS = {
   en: {
     'app.title': 'QR Code Generator',
     'app.tagline': 'Create QR codes for URLs, WiFi, vCards, text — 100% in your browser',
-    'privacy.badge': 'Client-side only',
-    'privacy.tooltip': 'No data leaves your device',
+    'privacy.badge': '🔒 Client-side only',
+    'privacy.link': 'View on GitHub',
+    'footer.bmc': 'Buy me a coffee',
+    'lang.selector': 'Language selector',
 
     'tabs.url': 'URL',
     'tabs.wifi': 'WiFi',
@@ -63,16 +65,15 @@ export const TRANSLATIONS = {
     'error.empty': 'Please fill in at least one field',
     'error.invalidUrl': 'Invalid URL',
     'error.failed': 'Generation failed: {msg}',
-
-    'footer.privacy': 'Your data never leaves your browser',
-    'footer.openSource': 'Open Source',
   },
 
   fr: {
     'app.title': 'Générateur QR Code',
     'app.tagline': 'Créez des QR codes pour URL, WiFi, vCard, texte — 100% dans votre navigateur',
-    'privacy.badge': 'Client-side uniquement',
-    'privacy.tooltip': 'Aucune donnée ne quitte votre appareil',
+    'privacy.badge': '🔒 Client-side uniquement',
+    'privacy.link': 'Voir sur GitHub',
+    'footer.bmc': 'Offrir un café',
+    'lang.selector': 'Sélecteur de langue',
 
     'tabs.url': 'URL',
     'tabs.wifi': 'WiFi',
@@ -115,16 +116,15 @@ export const TRANSLATIONS = {
     'error.empty': 'Veuillez remplir au moins un champ',
     'error.invalidUrl': 'URL invalide',
     'error.failed': 'Échec génération : {msg}',
-
-    'footer.privacy': 'Vos données ne quittent jamais votre navigateur',
-    'footer.openSource': 'Open Source',
   },
 
   de: {
     'app.title': 'QR-Code-Generator',
     'app.tagline': 'Erstellen Sie QR-Codes für URLs, WiFi, vCards, Text — 100% im Browser',
-    'privacy.badge': 'Nur Client-Seite',
-    'privacy.tooltip': 'Keine Daten verlassen Ihr Gerät',
+    'privacy.badge': '🔒 Nur Client-Seite',
+    'privacy.link': 'Auf GitHub ansehen',
+    'footer.bmc': 'Kaffee ausgeben',
+    'lang.selector': 'Sprachauswahl',
 
     'tabs.url': 'URL',
     'tabs.wifi': 'WiFi',
@@ -167,16 +167,15 @@ export const TRANSLATIONS = {
     'error.empty': 'Bitte füllen Sie mindestens ein Feld aus',
     'error.invalidUrl': 'Ungültige URL',
     'error.failed': 'Generierung fehlgeschlagen: {msg}',
-
-    'footer.privacy': 'Ihre Daten verlassen nie Ihren Browser',
-    'footer.openSource': 'Open Source',
   },
 
   es: {
     'app.title': 'Generador de Código QR',
     'app.tagline': 'Crear códigos QR para URLs, WiFi, vCards, texto — 100% en el navegador',
-    'privacy.badge': 'Solo cliente',
-    'privacy.tooltip': 'Ningún dato sale de tu dispositivo',
+    'privacy.badge': '🔒 Solo cliente',
+    'privacy.link': 'Ver en GitHub',
+    'footer.bmc': 'Invítame un café',
+    'lang.selector': 'Selector de idioma',
 
     'tabs.url': 'URL',
     'tabs.wifi': 'WiFi',
@@ -219,16 +218,15 @@ export const TRANSLATIONS = {
     'error.empty': 'Por favor completa al menos un campo',
     'error.invalidUrl': 'URL inválida',
     'error.failed': 'Generación fallida: {msg}',
-
-    'footer.privacy': 'Tus datos nunca salen de tu navegador',
-    'footer.openSource': 'Código abierto',
   },
 
   pt: {
     'app.title': 'Gerador de Código QR',
     'app.tagline': 'Criar códigos QR para URLs, WiFi, vCards, texto — 100% no navegador',
-    'privacy.badge': 'Apenas cliente',
-    'privacy.tooltip': 'Nenhum dado sai do seu dispositivo',
+    'privacy.badge': '🔒 Apenas cliente',
+    'privacy.link': 'Ver no GitHub',
+    'footer.bmc': 'Pague um café',
+    'lang.selector': 'Seletor de idioma',
 
     'tabs.url': 'URL',
     'tabs.wifi': 'WiFi',
@@ -271,16 +269,15 @@ export const TRANSLATIONS = {
     'error.empty': 'Por favor preencha pelo menos um campo',
     'error.invalidUrl': 'URL inválida',
     'error.failed': 'Falha na geração: {msg}',
-
-    'footer.privacy': 'Seus dados nunca saem do navegador',
-    'footer.openSource': 'Código aberto',
   },
 
   nl: {
     'app.title': 'QR Code Generator',
     'app.tagline': "Maak QR-codes voor URL's, WiFi, vCards, tekst — 100% in je browser",
-    'privacy.badge': 'Alleen cliëntkant',
-    'privacy.tooltip': 'Geen gegevens verlaten je apparaat',
+    'privacy.badge': '🔒 Alleen cliëntkant',
+    'privacy.link': 'Bekijk op GitHub',
+    'footer.bmc': 'Koffie aanbieden',
+    'lang.selector': 'Taalkeuze',
 
     'tabs.url': 'URL',
     'tabs.wifi': 'WiFi',
@@ -323,16 +320,15 @@ export const TRANSLATIONS = {
     'error.empty': 'Vul ten minste één veld in',
     'error.invalidUrl': 'Ongeldige URL',
     'error.failed': 'Generatie mislukt: {msg}',
-
-    'footer.privacy': 'Je gegevens verlaten nooit je browser',
-    'footer.openSource': 'Open bron',
   },
 
   it: {
     'app.title': 'Generatore QR Code',
     'app.tagline': 'Crea codici QR per URL, WiFi, vCard, testo — 100% nel browser',
-    'privacy.badge': 'Solo lato client',
-    'privacy.tooltip': 'Nessun dato lascia il tuo dispositivo',
+    'privacy.badge': '🔒 Solo lato client',
+    'privacy.link': 'Vedi su GitHub',
+    'footer.bmc': 'Offri un caffè',
+    'lang.selector': 'Selettore lingua',
 
     'tabs.url': 'URL',
     'tabs.wifi': 'WiFi',
@@ -375,9 +371,6 @@ export const TRANSLATIONS = {
     'error.empty': 'Compila almeno un campo',
     'error.invalidUrl': 'URL non valido',
     'error.failed': 'Generazione fallita: {msg}',
-
-    'footer.privacy': 'I tuoi dati non lasciano mai il browser',
-    'footer.openSource': 'Open Source',
   },
 };
 
@@ -457,23 +450,31 @@ export async function initI18n() {
 }
 
 function setupLangSelector(container) {
-  const select = document.createElement('select');
-  select.className = 'lang-selector';
-  select.setAttribute('aria-label', 'Select language');
-
+  container.classList.add('lang-selector');
+  container.setAttribute('role', 'group');
+  container.setAttribute('aria-label', t('lang.selector'));
   for (const [code, lang] of Object.entries(LANGUAGES)) {
-    const option = document.createElement('option');
-    option.value = code;
-    option.textContent = lang.name;
-    option.selected = code === currentLang;
-    select.appendChild(option);
-  }
-
-  select.addEventListener('change', () => {
-    if (setCurrentLang(select.value)) {
-      window.location.reload();
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'lang-btn';
+    btn.textContent = lang.flag;
+    btn.title = lang.name;
+    btn.setAttribute('aria-label', lang.name);
+    btn.setAttribute('data-lang', code);
+    if (code === currentLang) {
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+    } else {
+      btn.setAttribute('aria-pressed', 'false');
     }
-  });
 
-  container.appendChild(select);
+    btn.addEventListener('click', () => {
+      if (code === currentLang) return;
+      if (setCurrentLang(code)) {
+        window.location.reload();
+      }
+    });
+
+    container.appendChild(btn);
+  }
 }
