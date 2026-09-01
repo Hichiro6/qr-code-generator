@@ -7,9 +7,7 @@
  * - Téléchargement PNG → fichier généré
  * - Téléchargement SVG → fichier SVG valide
  */
-import { test, expect } from '@playwright/test';
-
-const STORAGE_KEY = 'qr-code-generator-lang';
+import { expect, test } from '@playwright/test';
 
 test.describe('🔳 Génération et Téléchargement QR Code', () => {
   test.beforeEach(async ({ page }) => {
@@ -34,8 +32,8 @@ test.describe('🔳 Génération et Téléchargement QR Code', () => {
     await expect(canvas).toHaveAttribute('aria-label', 'Generated QR code');
 
     // Verify canvas has dimensions
-    const width = await canvas.evaluate(el => el.width);
-    const height = await canvas.evaluate(el => el.height);
+    const width = await canvas.evaluate((el) => el.width);
+    const height = await canvas.evaluate((el) => el.height);
     expect(width).toBeGreaterThan(0);
     expect(height).toBeGreaterThan(0);
 

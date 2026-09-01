@@ -389,7 +389,7 @@ function detectLanguage() {
     if (stored && LANGUAGES[stored]) {
       return stored;
     }
-  } catch (e) {
+  } catch {
     // localStorage not available
   }
   const browserLang = navigator.language.slice(0, 2);
@@ -408,7 +408,7 @@ export function setCurrentLang(langCode) {
     currentLang = langCode;
     try {
       localStorage.setItem(STORAGE_KEY, langCode);
-    } catch (e) {
+    } catch {
       // localStorage not available
     }
     document.documentElement.lang = langCode;

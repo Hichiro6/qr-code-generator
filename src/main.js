@@ -8,7 +8,6 @@ import { initI18n, t } from './i18n.js';
 
 // State
 let currentTab = 'url';
-let lastQrData = '';
 
 // Elements
 const tabs = document.querySelectorAll('.tab');
@@ -199,10 +198,10 @@ async function generateQr() {
   btnGenerate.textContent = t('btn.downloading');
 
   try {
-    const size = parseInt(qrSize.value);
+    const size = parseInt(qrSize.value, 10);
     const color = qrColor.value;
     const bg = qrBg.value;
-    const margin = parseInt(qrMargin.value);
+    const margin = parseInt(qrMargin.value, 10);
 
     // Generate as canvas
     const canvas = document.createElement('canvas');
@@ -224,7 +223,6 @@ async function generateQr() {
     qrPreview.appendChild(canvas);
 
     // Store canvas reference for downloads (avoids memory leak from repeated toDataURL)
-    lastQrData = data;
     qrPreview.currentCanvas = canvas;
     qrActions.hidden = false;
     announce('QR code generated');
@@ -318,9 +316,8 @@ function resetForm() {
   marginValue.textContent = '2';
   qrSize.value = '512';
 
-  qrPreview.innerHTML = '<p class="qr-placeholder">' + t('btn.generate') + '</p>';
+  qrPreview.innerHTML = `<p class="qr-placeholder">${t('btn.generate')}</p>`;
   qrActions.hidden = true;
-  lastQrData = '';
   qrPreview.currentCanvas = null;
   delete qrPreview.dataset.svgData;
 }

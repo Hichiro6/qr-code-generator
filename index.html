@@ -19,7 +19,7 @@
     <div class="header__inner">
       <div class="header__brand">
         <div class="header__logo">
-          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true" focusable="false">
             <rect x="3" y="3" width="9" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
             <rect x="5" y="5" width="3" height="3" fill="#9a9bff"/>
             <rect x="16" y="3" width="9" height="9" rx="1" fill="none" stroke="currentColor" stroke-width="2"/>
@@ -45,10 +45,10 @@
     <div class="workspace">
       <!-- Tabs -->
       <div class="tabs" role="tablist" aria-label="QR Code type">
-        <button class="tab tab--active" role="tab" id="tab-btn-url" aria-selected="true" aria-controls="tab-url" tabindex="0" data-tab="url" data-i18n="tabs.url">URL</button>
-        <button class="tab" role="tab" id="tab-btn-wifi" aria-selected="false" aria-controls="tab-wifi" tabindex="-1" data-tab="wifi" data-i18n="tabs.wifi">WiFi</button>
-        <button class="tab" role="tab" id="tab-btn-vcard" aria-selected="false" aria-controls="tab-vcard" tabindex="-1" data-tab="vcard" data-i18n="tabs.vcard">vCard</button>
-        <button class="tab" role="tab" id="tab-btn-text" aria-selected="false" aria-controls="tab-text" tabindex="-1" data-tab="text" data-i18n="tabs.text">Text</button>
+        <button class="tab tab--active" type="button" role="tab" id="tab-btn-url" aria-selected="true" aria-controls="tab-url" tabindex="0" data-tab="url" data-i18n="tabs.url">URL</button>
+        <button class="tab" type="button" role="tab" id="tab-btn-wifi" aria-selected="false" aria-controls="tab-wifi" tabindex="-1" data-tab="wifi" data-i18n="tabs.wifi">WiFi</button>
+        <button class="tab" type="button" role="tab" id="tab-btn-vcard" aria-selected="false" aria-controls="tab-vcard" tabindex="-1" data-tab="vcard" data-i18n="tabs.vcard">vCard</button>
+        <button class="tab" type="button" role="tab" id="tab-btn-text" aria-selected="false" aria-controls="tab-text" tabindex="-1" data-tab="text" data-i18n="tabs.text">Text</button>
       </div>
 
       <div class="workspace__body">
@@ -164,21 +164,21 @@
           </div>
 
           <div class="actions">
-            <button id="btn-generate" class="btn btn--primary" data-i18n="btn.generate">Generate QR Code</button>
-            <button id="btn-reset" class="btn btn--ghost btn-sm" data-i18n="btn.reset">Reset</button>
+            <button id="btn-generate" type="button" class="btn btn--primary" data-i18n="btn.generate">Generate QR Code</button>
+            <button id="btn-reset" type="button" class="btn btn--ghost btn-sm" data-i18n="btn.reset">Reset</button>
           </div>
         </div>
 
         <!-- Right: QR Preview -->
         <aside class="controls-section">
           <h2 class="controls-title">QR Code</h2>
-          <div id="qr-preview" class="qr-preview" aria-label="QR code preview">
+          <div id="qr-preview" class="qr-preview" role="img" aria-label="QR code preview">
             <p class="qr-placeholder" data-i18n="btn.generate">Generate QR Code</p>
           </div>
           <div id="qr-actions" class="actions" hidden>
-            <button id="btn-download" class="btn btn--primary" data-i18n="btn.download">Download PNG</button>
-            <button id="btn-download-svg" class="btn btn--secondary" data-i18n="btn.downloadSvg">Download SVG</button>
-            <button id="btn-copy" class="btn btn--secondary" data-i18n="btn.copy">Copy Image</button>
+            <button id="btn-download" type="button" class="btn btn--primary" data-i18n="btn.download">Download PNG</button>
+            <button id="btn-download-svg" type="button" class="btn btn--secondary" data-i18n="btn.downloadSvg">Download SVG</button>
+            <button id="btn-copy" type="button" class="btn btn--secondary" data-i18n="btn.copy">Copy Image</button>
           </div>
         </aside>
       </div>

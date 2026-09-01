@@ -6,22 +6,19 @@
  * - Tabs ARIA conformes (tablist/tab/tabpanel)
  * - Lang selector accessible
  */
-import { test, expect } from '@playwright/test';
-import AxeBuilder from '@axe-core/playwright';
 
-const STORAGE_KEY = 'qr-code-generator-lang';
+import AxeBuilder from '@axe-core/playwright';
+import { expect, test } from '@playwright/test';
 
 test.describe('♿ Accessibilité (axe-core)', () => {
   test.beforeEach(async ({ page }) => {
     await page.addInitScript(() => localStorage.removeItem('qr-code-generator-lang'));
   });
 
-  test('page d\'accueil sans violations majeures', async ({ page }) => {
+  test("page d'accueil sans violations majeures", async ({ page }) => {
     await page.goto('/');
 
-    const results = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa'])
-      .analyze();
+    const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze();
 
     console.log(`Violations trouvées: ${results.violations.length}`);
     for (const v of results.violations) {
@@ -29,7 +26,7 @@ test.describe('♿ Accessibilité (axe-core)', () => {
     }
 
     // Only critical violations must be zero (known: color-contrast on privacy badge is "serious")
-    const critical = results.violations.filter(v => v.impact === 'critical');
+    const critical = results.violations.filter((v) => v.impact === 'critical');
     expect(critical).toHaveLength(0);
   });
 
@@ -83,7 +80,7 @@ test.describe('♿ Accessibilité (axe-core)', () => {
     await expect(page.locator('#tab-wifi')).not.toHaveAttribute('hidden');
   });
 
-  test('boutons d\'action accessibles (labels et états)', async ({ page }) => {
+  test("boutons d'action accessibles (labels et états)", async ({ page }) => {
     await page.goto('/');
     await page.waitForSelector('#btn-generate', { timeout: 10000 });
 
